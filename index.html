@@ -1,0 +1,784 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<style>
+:root { color-scheme: light; padding-top: env(safe-area-inset-top, 0px); padding-bottom: env(safe-area-inset-bottom, 0px); }
+body { margin: 0; }
+img { max-width: 100%; }
+[hidden] { display: none !important; }
+</style>
+<title>Aditya Kasthuri Portfolio</title>
+<meta name="description" content="Portfolio of Aditya Kasthuri, graphic designer and automation specialist in Chennai. Selected work for Dhruti Charitable Trust, Mind Mantra and Rikkon Group.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&family=IBM+Plex+Mono:wght@400;500&family=IBM+Plex+Sans:ital,wght@0,400;0,500;0,600;1,400&display=swap">
+<style>
+/* Layout: a print-shop proof sheet. Huge expanded name inside crop marks, then one
+   "job" per client with a spec sheet beside it and the work laid out like proofs. */
+:root {
+  --paper: #ECEEF1;
+  --surface: #FFFFFF;
+  --ink: #14161B;
+  --muted: #586070;
+  --rule: #C6CCD5;
+  --accent: #C2185B;
+  --c: #00A0DC; --m: #E5007D; --y: #FFE400; --k: #14161B;
+  --shadow: 0 1px 2px rgba(20,22,27,.08), 0 8px 24px rgba(20,22,27,.06);
+  --overlay: rgba(10,12,16,.92);
+  /* client brand grounds for logo tiles: identical in both themes on purpose */
+  --brand-navy: #233A8F;
+  --brand-white: #FFFFFF;
+
+  --display: "Archivo", "Arial Black", "Helvetica Neue", Arial, sans-serif;
+  --body: "IBM Plex Sans", "Segoe UI", system-ui, -apple-system, sans-serif;
+  --mono: "IBM Plex Mono", ui-monospace, "Cascadia Mono", Consolas, monospace;
+
+  --max: 1180px;
+  --gap: clamp(12px, 1.6vw, 20px);
+}
+@media (prefers-color-scheme: dark) {
+  :root:not([data-theme="light"]) {
+    --paper: #101216; --surface: #191C22; --ink: #ECEEF2; --muted: #9AA2AF;
+    --rule: #2B3039; --accent: #FF5E9C; --k: #ECEEF2;
+    --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+    color-scheme: dark;
+  }
+}
+:root[data-theme="dark"] {
+  --paper: #101216; --surface: #191C22; --ink: #ECEEF2; --muted: #9AA2AF;
+  --rule: #2B3039; --accent: #FF5E9C; --k: #ECEEF2;
+  --shadow: 0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+  color-scheme: dark;
+}
+
+* { box-sizing: border-box; }
+html { scroll-behavior: smooth; }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+body {
+  background: var(--paper);
+  color: var(--ink);
+  font-family: var(--body);
+  font-size: 16px;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+}
+.wrap {
+  max-width: var(--max);
+  margin: 0 auto;
+  padding-left: max(16px, env(safe-area-inset-left, 0px));
+  padding-right: max(16px, env(safe-area-inset-right, 0px));
+}
+a { color: inherit; }
+:focus-visible { outline: 2px solid var(--accent); outline-offset: 3px; }
+
+.label {
+  font-family: var(--mono);
+  font-size: 12px;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  color: var(--muted);
+}
+
+/* ---------- Top bar ---------- */
+body::before {
+  content: ""; position: fixed; inset: 0 0 auto;
+  height: env(safe-area-inset-top, 0px); z-index: 10; background: var(--paper);
+}
+.top {
+  position: sticky; top: env(safe-area-inset-top, 0px); z-index: 5;
+  background: color-mix(in srgb, var(--paper) 88%, transparent);
+  backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--rule);
+}
+.top .wrap {
+  display: flex; align-items: center; justify-content: space-between;
+  gap: 16px; padding-block: 12px; flex-wrap: wrap;
+}
+.mark {
+  font-family: var(--display); font-weight: 800; font-stretch: 125%;
+  font-size: 15px; letter-spacing: .02em; text-decoration: none;
+}
+.top nav { display: flex; gap: clamp(12px, 2.4vw, 28px); flex-wrap: wrap; }
+.top nav a {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .08em;
+  text-transform: uppercase; text-decoration: none; color: var(--muted);
+}
+.top nav a:hover { color: var(--accent); }
+
+/* ---------- Hero ---------- */
+.hero { padding-block: clamp(40px, 7vw, 88px) clamp(32px, 5vw, 56px); }
+.sheet {
+  position: relative;
+  padding: clamp(24px, 4vw, 48px) clamp(18px, 3.4vw, 44px);
+}
+/* crop marks at the four corners */
+.sheet::before, .sheet::after, .sheet > .cm-b::before, .sheet > .cm-b::after {
+  content: ""; position: absolute; width: 22px; height: 22px;
+  border-color: var(--ink); border-style: solid; border-width: 0;
+}
+.sheet::before { top: 0; left: 0; border-top-width: 1px; border-left-width: 1px; }
+.sheet::after { top: 0; right: 0; border-top-width: 1px; border-right-width: 1px; }
+.sheet > .cm-b { position: absolute; inset: auto 0 0 0; height: 22px; pointer-events: none; }
+.sheet > .cm-b::before { bottom: 0; left: 0; border-bottom-width: 1px; border-left-width: 1px; }
+.sheet > .cm-b::after { bottom: 0; right: 0; border-bottom-width: 1px; border-right-width: 1px; }
+
+.hero .label { margin: 0 0 18px; }
+.name {
+  font-family: var(--display);
+  font-weight: 850;
+  font-stretch: 125%;
+  font-size: clamp(2.5rem, 9.6vw, 7.6rem);
+  line-height: .9;
+  letter-spacing: -.01em;
+  text-transform: uppercase;
+  margin: 0;
+  text-wrap: balance;
+}
+.name span { display: block; }
+.name .k2 { color: var(--accent); }
+.role {
+  font-family: var(--display); font-weight: 500; font-stretch: 100%;
+  font-size: clamp(1.15rem, 2.2vw, 1.5rem); line-height: 1.3;
+  margin: 22px 0 0; max-width: 34ch; text-wrap: balance;
+}
+.hero-grid {
+  display: grid; grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px); margin-top: clamp(28px, 4vw, 44px);
+  align-items: end;
+}
+.bio { margin: 0; max-width: 62ch; color: var(--ink); }
+.bio p { margin: 0 0 12px; }
+.bio p:last-child { margin-bottom: 0; }
+
+.facts { display: grid; gap: 0; margin: 0; border-top: 1px solid var(--rule); }
+.facts div {
+  display: grid; grid-template-columns: 120px minmax(0, 1fr); gap: 12px;
+  padding-block: 10px; border-bottom: 1px solid var(--rule);
+}
+.facts dt { font-family: var(--mono); font-size: 12px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 2px; }
+.facts dd { margin: 0; font-size: 15px; }
+
+.swatches {
+  display: flex; align-items: center; gap: 0; margin-top: clamp(28px, 4vw, 40px);
+  flex-wrap: wrap; row-gap: 8px;
+}
+.sw { width: 28px; height: 14px; }
+.sw.c { background: var(--c); } .sw.m { background: var(--m); }
+.sw.y { background: var(--y); } .sw.k { background: var(--k); }
+.sw.c50 { background: color-mix(in srgb, var(--c) 50%, var(--paper)); }
+.sw.m50 { background: color-mix(in srgb, var(--m) 50%, var(--paper)); }
+.sw.y50 { background: color-mix(in srgb, var(--y) 50%, var(--paper)); }
+.sw.k50 { background: color-mix(in srgb, var(--k) 50%, var(--paper)); }
+.swatches .label { margin: 0 0 0 14px; font-size: 11px; }
+
+/* ---------- Index ---------- */
+.index { padding-block: 8px 24px; }
+.index h2 { margin: 0 0 12px; }
+.index ol { list-style: none; margin: 0; padding: 0; border-top: 1px solid var(--ink); }
+.index li { border-bottom: 1px solid var(--rule); }
+.index a {
+  display: grid; grid-template-columns: minmax(0, 1.2fr) minmax(0, 1.6fr) 90px;
+  gap: 16px; align-items: baseline; padding-block: 16px; text-decoration: none;
+}
+.index a:hover .ix-title { color: var(--accent); }
+.ix-title {
+  font-family: var(--display); font-weight: 750; font-stretch: 112%;
+  font-size: clamp(1.25rem, 2.6vw, 1.75rem); line-height: 1.15; transition: color .15s;
+}
+.ix-what { color: var(--muted); font-size: 15px; }
+.ix-year { font-family: var(--mono); font-size: 13px; color: var(--muted); text-align: right; font-variant-numeric: tabular-nums; }
+
+/* ---------- Projects ---------- */
+.project { padding-block: clamp(56px, 8vw, 104px) 0; scroll-margin-top: 56px; }
+.project-head {
+  display: grid; grid-template-columns: minmax(0, 1.4fr) minmax(0, 1fr);
+  gap: clamp(24px, 4vw, 56px); padding-top: 20px; border-top: 3px solid var(--ink);
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+}
+.project-head .label { margin: 0 0 10px; }
+.project-head .label b { color: var(--accent); font-weight: 500; }
+.project h2 {
+  font-family: var(--display); font-weight: 800; font-stretch: 118%;
+  font-size: clamp(2rem, 5vw, 3.6rem); line-height: .98; letter-spacing: -.01em;
+  margin: 0 0 18px; text-wrap: balance;
+}
+.lede { margin: 0; max-width: 60ch; }
+.lede + .lede { margin-top: 12px; }
+.spec { margin: 0; border-top: 1px solid var(--rule); align-self: start; }
+.spec div {
+  display: grid; grid-template-columns: 112px minmax(0, 1fr); gap: 12px;
+  padding-block: 9px; border-bottom: 1px solid var(--rule);
+}
+.spec dt { font-family: var(--mono); font-size: 11.5px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); padding-top: 3px; }
+.spec dd { margin: 0; font-size: 14.5px; line-height: 1.5; }
+
+.row { display: grid; gap: var(--gap); margin-bottom: var(--gap); align-items: start; }
+.r3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.r4 { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+.r2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.r21 { grid-template-columns: minmax(0, 2fr) minmax(0, 1fr); }
+.r11 { grid-template-columns: minmax(0, 1.15fr) minmax(0, 1fr); }
+.r1 { grid-template-columns: minmax(0, 1fr); }
+
+figure { margin: 0; min-width: 0; }
+.shot {
+  display: block; width: 100%; padding: 0; border: 0; cursor: zoom-in;
+  background: var(--surface); box-shadow: var(--shadow);
+  line-height: 0;
+}
+.shot img { display: block; width: 100%; height: auto; max-width: 100%; transition: opacity .2s; }
+.shot:hover img { opacity: .93; }
+figcaption { padding-top: 10px; display: grid; gap: 2px; }
+figcaption strong { font-weight: 600; font-size: 14.5px; line-height: 1.4; }
+figcaption span { font-family: var(--mono); font-size: 11.5px; letter-spacing: .04em; color: var(--muted); }
+
+.note {
+  background: var(--surface); box-shadow: var(--shadow);
+  padding: clamp(18px, 2.4vw, 28px); min-width: 0;
+}
+.note h3 {
+  font-family: var(--display); font-weight: 750; font-stretch: 110%;
+  font-size: 1.2rem; margin: 0 0 6px; line-height: 1.2;
+}
+.note p { margin: 0 0 14px; font-size: 15px; color: var(--muted); }
+.table-scroll { overflow-x: auto; }
+.note table { width: 100%; border-collapse: collapse; font-size: 14px; font-variant-numeric: tabular-nums; }
+.note th, .note td { text-align: left; padding: 8px 10px 8px 0; border-bottom: 1px solid var(--rule); vertical-align: top; }
+.note th { font-family: var(--mono); font-weight: 500; font-size: 11px; letter-spacing: .08em; text-transform: uppercase; color: var(--muted); }
+.note td:first-child { font-weight: 600; white-space: nowrap; }
+.note ul { margin: 0; padding-left: 18px; font-size: 15px; }
+.note li { margin-bottom: 6px; }
+.note li::marker { color: var(--accent); }
+
+.stats {
+  display: grid; grid-template-columns: repeat(4, minmax(0, 1fr));
+  border-top: 1px solid var(--ink); border-bottom: 1px solid var(--rule);
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+}
+.stat { padding: 16px 16px 16px 0; min-width: 0; }
+.stat + .stat { padding-left: 16px; border-left: 1px solid var(--rule); }
+.stat b {
+  display: block; font-family: var(--display); font-weight: 800; font-stretch: 112%;
+  font-size: clamp(2rem, 4.4vw, 3rem); line-height: 1; font-variant-numeric: tabular-nums;
+}
+.stat span { display: block; margin-top: 8px; font-size: 14px; color: var(--muted); line-height: 1.4; }
+
+/* ---------- Logo tiles ---------- */
+.tile {
+  aspect-ratio: 4 / 3; max-width: 100%;
+  display: grid; place-items: center; padding: 12% 14%;
+  box-shadow: var(--shadow);
+}
+.tile.navy { background: var(--brand-navy); }
+.tile.white { background: var(--brand-white); }
+.tile img { width: 100%; height: 100%; object-fit: contain; display: block; }
+.tile.tall { padding: 10% 30%; }
+
+/* ---------- Contact ---------- */
+.contact { padding-block: clamp(72px, 10vw, 128px) clamp(40px, 6vw, 72px); scroll-margin-top: 56px; }
+.contact .sheet { padding-block: clamp(28px, 4vw, 48px); }
+.contact h2 {
+  font-family: var(--display); font-weight: 850; font-stretch: 125%;
+  font-size: clamp(2rem, 6vw, 4.4rem); line-height: .95; text-transform: uppercase;
+  margin: 0 0 14px; text-wrap: balance;
+}
+.contact p { margin: 0 0 28px; max-width: 52ch; color: var(--muted); }
+.lines { display: grid; gap: 0; border-top: 1px solid var(--rule); }
+.line {
+  display: grid; grid-template-columns: 112px minmax(0, 1fr) auto; gap: 12px;
+  align-items: center; padding-block: 14px; border-bottom: 1px solid var(--rule);
+}
+.line .v {
+  font-family: var(--display); font-weight: 650; font-stretch: 105%;
+  font-size: clamp(1.05rem, 2.6vw, 1.5rem); overflow-wrap: anywhere; user-select: all;
+}
+.copy {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  background: transparent; color: var(--ink); border: 1px solid var(--ink);
+  padding: 7px 12px; cursor: pointer; min-width: 74px;
+}
+.copy:hover { background: var(--ink); color: var(--paper); }
+.copy.done { border-color: var(--accent); color: var(--accent); background: transparent; }
+
+footer { border-top: 1px solid var(--rule); }
+footer .wrap {
+  display: flex; justify-content: space-between; gap: 16px; flex-wrap: wrap;
+  padding-block: 20px 28px;
+}
+footer .label { font-size: 11px; }
+
+/* ---------- Lightbox ---------- */
+.lb {
+  position: fixed; inset: 0; z-index: 50; background: var(--overlay);
+  display: grid; grid-template-rows: auto minmax(0, 1fr) auto;
+  padding: calc(12px + env(safe-area-inset-top, 0px)) max(12px, env(safe-area-inset-right, 0px)) calc(12px + env(safe-area-inset-bottom, 0px)) max(12px, env(safe-area-inset-left, 0px));
+}
+.lb-bar { display: flex; justify-content: space-between; align-items: center; gap: 12px; }
+.lb-count { font-family: var(--mono); font-size: 12px; color: #C9CED6; letter-spacing: .08em; }
+.lb-btns { display: flex; gap: 8px; }
+.lb button {
+  font-family: var(--mono); font-size: 12px; letter-spacing: .06em; text-transform: uppercase;
+  background: transparent; color: #F2F3F5; border: 1px solid #5A616C;
+  padding: 8px 12px; cursor: pointer;
+}
+.lb button:hover { border-color: #F2F3F5; }
+.lb-stage { display: grid; place-items: center; min-height: 0; padding-block: 12px; }
+.lb-stage img { max-width: 100%; max-height: 100%; object-fit: contain; box-shadow: 0 10px 40px rgba(0,0,0,.5); }
+.lb-cap { text-align: center; color: #F2F3F5; display: grid; gap: 2px; }
+.lb-cap strong { font-weight: 600; font-size: 15px; }
+.lb-cap span { font-family: var(--mono); font-size: 12px; color: #AEB4BE; }
+
+/* ---------- Responsive ---------- */
+@media (max-width: 900px) {
+  .hero-grid, .project-head { grid-template-columns: minmax(0, 1fr); }
+  .r4 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .r21, .r11 { grid-template-columns: minmax(0, 1fr); }
+  .stats { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .stat:nth-child(3) { padding-left: 0; border-left: 0; }
+  .stat:nth-child(n+3) { border-top: 1px solid var(--rule); }
+}
+@media (max-width: 640px) {
+  .r3, .r2 { grid-template-columns: minmax(0, 1fr); }
+  .index a { grid-template-columns: minmax(0, 1fr) auto; }
+  .ix-what { grid-column: 1 / -1; grid-row: 2; }
+  .ix-year { grid-row: 1; grid-column: 2; }
+  .facts div, .spec div { grid-template-columns: 96px minmax(0, 1fr); }
+  .line { grid-template-columns: minmax(0, 1fr) auto; }
+  .line .label { grid-column: 1 / -1; }
+  .top nav a.hide-sm { display: none; }
+}
+</style>
+</head>
+<body>
+<header class="top">
+  <div class="wrap">
+    <a class="mark" href="#top">AK</a>
+    <nav aria-label="Projects">
+      <a href="#dhruti">Dhruti Trust</a>
+      <a href="#mind-mantra">Mind Mantra</a>
+      <a href="#rikkon">Rikkon</a>
+      <a href="#contact" class="hide-sm">Contact</a>
+    </nav>
+  </div>
+</header>
+
+<main id="top">
+  <section class="hero">
+    <div class="wrap">
+      <div class="sheet">
+        <span class="cm-b" aria-hidden="true"></span>
+        <p class="label">Portfolio · Chennai, India · 2026</p>
+        <h1 class="name"><span>Aditya</span><span class="k2">Kasthuri</span></h1>
+        <p class="role">Graphic Designer and Automation Specialist. AI-assisted campaigns, print collateral, brand assets and process design.</p>
+
+        <div class="hero-grid">
+          <div class="bio">
+            <p>I am a graphic designer with more than eleven years of experience producing print and digital advertising for clients in India, Japan, Australia and the United States, working in Adobe Photoshop, Illustrator and InDesign.</p>
+            <p>My current practice pairs generative AI imagery with established design discipline: art direction, layout, typography, brand consistency and print-ready production. I also design and implement workflow automation for business clients. The case studies below show this work in practice.</p>
+          </div>
+          <dl class="facts">
+            <div><dt>Current</dt><dd>Automation Solutions Builder, Avinya IT Pvt. Ltd. (2026–present)</dd></div>
+            <div><dt>Previous</dt><dd>Image Designer, Groupon Shared Services, India and Japan (2016–2026)</dd></div>
+            <div><dt>Tools</dt><dd>Adobe Illustrator, Photoshop and InDesign; generative AI imaging; Make.com</dd></div>
+            <div><dt>Languages</dt><dd>English, Tamil, Hindi, Japanese</dd></div>
+          </dl>
+        </div>
+
+        <div class="swatches" aria-hidden="true">
+          <i class="sw c"></i><i class="sw c50"></i><i class="sw m"></i><i class="sw m50"></i><i class="sw y"></i><i class="sw y50"></i><i class="sw k"></i><i class="sw k50"></i>
+          <span class="label">All print deliverables supplied in CMYK with bleed and proofs</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="index" aria-labelledby="ix">
+    <div class="wrap">
+      <h2 id="ix" class="label">Selected work</h2>
+      <ol>
+        <li><a href="#dhruti"><span class="ix-title">Dhruti Trust · Campaign</span><span class="ix-what">Deepavali campaign, website banners and helpline print collateral</span><span class="ix-year">2026</span></a></li>
+        <li><a href="#dhruti-identity"><span class="ix-title">Dhruti Trust · Logo Suite</span><span class="ix-what">Vector logo system for the Trust and its programme sub-brands</span><span class="ix-year">2026</span></a></li>
+        <li><a href="#dhruti-certificates"><span class="ix-title">Dhruti Trust · Certificates</span><span class="ix-what">Internship and competition certificate templates</span><span class="ix-year">2026</span></a></li>
+        <li><a href="#mind-mantra"><span class="ix-title">Mind Mantra</span><span class="ix-what">Employee wellness posters, business cards and festival greetings</span><span class="ix-year">2026</span></a></li>
+        <li><a href="#rikkon"><span class="ix-title">Rikkon Group</span><span class="ix-what">AI-driven enquiry automation and process documentation</span><span class="ix-year">2026</span></a></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- ================= DHRUTI ================= -->
+  <section class="project" id="dhruti" aria-labelledby="h-dhruti">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="label">Client · <b>Dhruti Charitable Trust</b> · Campaign</p>
+          <h2 id="h-dhruti">Deepavali 2026 Campaign and Helpline Collateral</h2>
+          <p class="lede">Dhruti Charitable Trust provides free counselling and operates a mental-health helpline in Chennai. For Deepavali 2026, I developed a greetings campaign for the Trust and its two programmes, Dhruti Saathi and Dhruti Saarathi, pairing seasonal wishes with a brief, supportive message about emotional wellbeing.</p>
+          <p class="lede">Scene imagery was generated with AI to a defined creative brief, including a butterfly formed from light, a paper-cut Chennai skyline and a family celebration. Each layout was then composed and typeset in Illustrator within the Trust's navy and gold identity, with bilingual Tamil and English headlines.</p>
+        </div>
+        <dl class="spec">
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Scope</dt><dd>8 social media greetings, 3 website banner concepts, helpline banner in three sizes, event standee</dd></div>
+          <div><dt>Formats</dt><dd>Instagram 1080×1350 · LinkedIn 1200×1200 · WhatsApp 1080×1080 · Web 1600×1200</dd></div>
+          <div><dt>Process</dt><dd>AI-generated imagery; layout, typography and print preparation in Adobe Illustrator</dd></div>
+        </dl>
+      </div>
+
+      <div class="row r3">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Butterfly of Light"><img src="img/dhruti-butterfly.jpg" width="1400" height="1050" alt="Deepavali greeting for Dhruti Trust: a golden butterfly made of sparks rising from a brass diya on deep blue." loading="lazy"></button>
+          <figcaption><strong>Butterfly of Light</strong><span>Website banner · 1600×1200</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Chennai Paper Cut"><img src="img/dhruti-papercut.jpg" width="1200" height="900" alt="Deepavali banner with a layered paper-cut Chennai skyline, temple gopuram, palms and fireworks in blue and gold." loading="lazy"></button>
+          <figcaption><strong>Chennai Paper Cut</strong><span>Website banner · 1600×1200</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Family Together"><img src="img/dhruti-family.jpg" width="1200" height="900" alt="Deepavali banner showing three generations of a Tamil family lighting sparklers together." loading="lazy"></button>
+          <figcaption><strong>Family Together</strong><span>Website banner · 1600×1200</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="row r21">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Deepavali greetings series"><img src="img/dhruti-series.jpg" width="1800" height="1125" alt="Eight Deepavali greeting posts for Dhruti Trust, Dhruti Saathi and Saarathi: village street, sweets on a banana leaf, rangoli, terrace, kuthuvilakku lamp, courtyard, temple arch and lamps on water." loading="lazy"></button>
+          <figcaption><strong>Deepavali greetings, full series</strong><span>8 concepts × 3 platforms = 24 exports</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Dhruti Saathi terrace"><img src="img/dhruti-saathi-terrace.jpg" width="900" height="1125" alt="Dhruti Saathi Deepavali post: a flowerpot firework on a lamp-lit terrace above the city." loading="lazy"></button>
+          <figcaption><strong>Dhruti Saathi · Terrace</strong><span>Instagram · 1080×1350</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="row r21">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Helpline banner"><img src="img/dhruti-banner.jpg" width="1400" height="933" alt="Print banner for Dhruti Charitable Trust's free and confidential mental health helpline, with gold butterfly logo, call hours and a QR code." loading="lazy"></button>
+          <figcaption><strong>Helpline banner, revision C</strong><span>Print · CMYK · outlined type</span></figcaption>
+        </figure>
+        <div class="note">
+          <h3>Print production</h3>
+          <p>A single master layout, adapted and prepared for commercial printing at three sizes.</p>
+          <div class="table-scroll">
+            <table>
+              <thead><tr><th>Size</th><th>Output</th></tr></thead>
+              <tbody>
+                <tr><td>3 × 2 ft</td><td>CMYK PDF, 200 dpi proof</td></tr>
+                <tr><td>4 × 3 ft</td><td>CMYK PDF, 150 dpi proof</td></tr>
+                <tr><td>6 × 4 ft</td><td>CMYK PDF, 100 dpi proof</td></tr>
+                <tr><td>All sizes</td><td>Supplied with and without eyelets; fonts converted to outlines</td></tr>
+              </tbody>
+            </table>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DHRUTI: LOGO SUITE ================= -->
+  <section class="project" id="dhruti-identity" aria-labelledby="h-identity">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="label">Client · <b>Dhruti Charitable Trust</b> · Brand identity</p>
+          <h2 id="h-identity">Vector Logo Suite</h2>
+          <p class="lede">To give the Trust dependable master artwork for both print and digital use, I redrew its butterfly mark, its wordmark and the logos of its two programmes, Dhruti Saathi and Dhruti Saarathi, as clean vector files.</p>
+          <p class="lede">The suite keeps the identity consistent across every application, from social media avatars to six-foot banners. It includes a metallic gold version for the Trust's navy backgrounds and a blue-and-gold version for white backgrounds.</p>
+        </div>
+        <dl class="spec">
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Scope</dt><dd>Primary logo, stacked mark, Dhruti Saathi and Dhruti Saarathi sub-brand logos</dd></div>
+          <div><dt>Formats</dt><dd>SVG, EPS and PDF for each version, with the Illustrator master file</dd></div>
+          <div><dt>Colour</dt><dd>Gold #CFA23B on Dhruti navy; blue-and-gold variant for light backgrounds</dd></div>
+        </dl>
+      </div>
+
+      <div class="row r3">
+        <figure>
+          <div class="tile navy"><img src="img/logo-trust-gold.svg" alt="Dhruti Trust primary logo in gold: butterfly mark with the wordmark and tagline Enabling Fortitude Within." loading="lazy"></div>
+          <figcaption><strong>Primary logo, gold</strong><span>For navy and dark backgrounds</span></figcaption>
+        </figure>
+        <figure>
+          <div class="tile white"><img src="img/logo-trust-bluegold.svg" alt="Dhruti Trust primary logo in blue and gold for white backgrounds." loading="lazy"></div>
+          <figcaption><strong>Primary logo, blue and gold</strong><span>For white and light backgrounds</span></figcaption>
+        </figure>
+        <figure>
+          <div class="tile navy"><img src="img/logo-saarathi-gold.svg" alt="Dhruti Saarathi programme logo in gold." loading="lazy"></div>
+          <figcaption><strong>Dhruti Saarathi</strong><span>Programme sub-brand</span></figcaption>
+        </figure>
+      </div>
+      <div class="row r3">
+        <figure>
+          <div class="tile navy tall"><img src="img/logo-stacked-gold.svg" alt="Dhruti stacked mark in gold: butterfly above the Dhruti wordmark." loading="lazy"></div>
+          <figcaption><strong>Stacked mark</strong><span>For avatars, seals and square formats</span></figcaption>
+        </figure>
+        <figure>
+          <div class="tile navy"><img src="img/logo-saathi-gold.svg" alt="Dhruti Saathi programme logo in gold." loading="lazy"></div>
+          <figcaption><strong>Dhruti Saathi</strong><span>Programme sub-brand</span></figcaption>
+        </figure>
+        <div class="note">
+          <h3>Deliverables</h3>
+          <p>Each version is supplied in three formats, so it can be used on screen, in print or by partner organisations.</p>
+          <ul>
+            <li><strong>SVG</strong> for websites and digital design.</li>
+            <li><strong>EPS and PDF</strong> for printers and signage vendors.</li>
+            <li><strong>Illustrator master</strong> kept as the editable source.</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= DHRUTI: CERTIFICATES ================= -->
+  <section class="project" id="dhruti-certificates" aria-labelledby="h-certs">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="label">Client · <b>Dhruti Charitable Trust</b> · Certificates</p>
+          <h2 id="h-certs">Certificate Templates</h2>
+          <p class="lede">I designed two certificate templates for Dhruti programmes. The first recognises Dhruti PEER interns for their contribution to mental-health initiatives and peer support. The second is awarded to prize winners of the Trust's poster-making competition for World Mental Health Day 2026.</p>
+          <p class="lede">Both templates share one A4 landscape frame with navy and gold geometry, a gold seal and the Dhruti mark, so the Trust can issue a consistent family of certificates. Recipient details are left blank to be completed by hand or before printing.</p>
+        </div>
+        <dl class="spec">
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Size</dt><dd>A4 landscape, 297 × 210 mm</dd></div>
+          <div><dt>Typography</dt><dd>Algerian for titles, Mileast for category labels, Arial for body text</dd></div>
+          <div><dt>Deliverables</dt><dd>Print-ready PDF and JPG, with editable Illustrator source</dd></div>
+        </dl>
+      </div>
+
+      <div class="row r2">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Internship certificate"><img src="img/cert-internship.jpg" width="1600" height="1131" alt="Dhruti internship certificate with navy and gold corners, the Dhruti logo, a gold 'You are appreciated' seal and blank fields for the intern's name and institution." loading="lazy"></button>
+          <figcaption><strong>Dhruti PEER internship certificate</strong><span>A4 landscape · signatures omitted for online display</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Poster competition certificate"><img src="img/cert-poster.jpg" width="1600" height="1137" alt="Dhruti certificate of achievement for the World Mental Health Day 2026 poster-making competition, with blank fields for name, institution and prize." loading="lazy"></button>
+          <figcaption><strong>Poster-making competition certificate</strong><span>A4 landscape · signatures omitted for online display</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= MIND MANTRA ================= -->
+  <section class="project" id="mind-mantra" aria-labelledby="h-mm">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="label">Client · <b>Mind Mantra, GCC Employees Wellness Program</b></p>
+          <h2 id="h-mm">Employee Wellness Communication Series</h2>
+          <p class="lede">Mind Mantra is a wellness centre for employees of the Greater Chennai Corporation, delivered in partnership with CREDAI Chennai Foundation and Dhruti Charitable Trust. Its materials had to be read and acted on in under a minute by busy civic staff.</p>
+          <p class="lede">I designed a poster series in which each poster presents one short self-care exercise alongside an AI-generated watercolour illustration. The work also includes a supporting icon set, the programme's business cards and two creative directions for Deepavali greetings.</p>
+        </div>
+        <dl class="spec">
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Scope</dt><dd>5 posters, 3 icons, business cards in 3 styles, 8 festival greetings</dd></div>
+          <div><dt>Typography</dt><dd>Fraunces for headlines, Nunito Sans for text</dd></div>
+          <div><dt>Process</dt><dd>AI-generated illustration; editable PowerPoint and CMYK Illustrator files</dd></div>
+        </dl>
+      </div>
+
+      <div class="row r4">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: The 60-Second Reset"><img src="img/mm-poster-reset.jpg" width="900" height="1125" alt="Poster 'The 60-Second Reset' with a 4-7-8 breathing exercise and a watercolour of a man breathing calmly at his desk." loading="lazy"></button>
+          <figcaption><strong>The 60-Second Reset</strong><span>Poster · 4-7-8 breathing</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Build Your Own Recovery Menu"><img src="img/mm-poster-recovery.jpg" width="900" height="1125" alt="Poster 'Build Your Own Recovery Menu' with cupped hands and three five-minute reset icons: breathing, stretching, stepping outside." loading="lazy"></button>
+          <figcaption><strong>Build Your Own Recovery Menu</strong><span>Poster · custom icon set</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Peace Check"><img src="img/mm-poster-peace.jpg" width="900" height="1125" alt="Poster 'Peace Check' with three numbered reflection questions and a watercolour of a man writing in a journal." loading="lazy"></button>
+          <figcaption><strong>Peace Check</strong><span>Poster · 3 questions</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Check Your Inner Voice"><img src="img/mm-poster-voice.jpg" width="900" height="1125" alt="Poster 'Check Your Inner Voice' with a watercolour of a woman smiling at her reflection, encouraging self-compassion." loading="lazy"></button>
+          <figcaption><strong>Check Your Inner Voice</strong><span>Poster · self-compassion</span></figcaption>
+        </figure>
+      </div>
+
+      <div class="row r11">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Business cards"><img src="img/mm-cards.jpg" width="1400" height="1473" alt="Mind Mantra business cards in three styles, front and back, with partner logos, centre timings, helpline and QR code." loading="lazy"></button>
+          <figcaption><strong>Business cards, styles A–C</strong><span>3.5 × 2 in · front and back</span></figcaption>
+        </figure>
+        <div class="note">
+          <h3>Business card options</h3>
+          <p>Three partner logos, two services and a QR code needed to fit legibly on a standard 3.5 × 2 inch card.</p>
+          <ul>
+            <li><strong>Style A, Corporate:</strong> left-aligned layout with a rule beneath the title.</li>
+            <li><strong>Style B, Classic:</strong> centred layout with a letter-spaced gold subtitle.</li>
+            <li><strong>Style C, Original:</strong> centred layout that keeps the structure of the first draft.</li>
+            <li>Each style supplied as print, bleed and proof PDFs with Illustrator source files.</li>
+          </ul>
+        </div>
+      </div>
+
+      <div class="row r1">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Traditional Deepavali greetings"><img src="img/mm-deepavali-traditional.jpg" width="1800" height="562" alt="Four traditional Mind Mantra Deepavali greetings: clay diyas, an open temple door, a brass urli of floating flowers, and new clothes with sweets." loading="lazy"></button>
+          <figcaption><strong>Deepavali greetings, traditional direction</strong><span>4 concepts · Instagram, LinkedIn, WhatsApp</span></figcaption>
+        </figure>
+      </div>
+      <div class="row r1">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Modern Deepavali greetings"><img src="img/mm-deepavali-modern.jpg" width="1800" height="562" alt="Four modern Mind Mantra Deepavali greetings: clay diyas, a kolam graphic, a single gold flame, and paper rangoli." loading="lazy"></button>
+          <figcaption><strong>Deepavali greetings, modern direction</strong><span>Clay Diyas · Kolam Graphic · One Flame · Paper Rangoli</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= RIKKON ================= -->
+  <section class="project" id="rikkon" aria-labelledby="h-rk">
+    <div class="wrap">
+      <div class="project-head">
+        <div>
+          <p class="label">Client · <b>Rikkon Group, LUBERR division</b></p>
+          <h2 id="h-rk">Pre-Sales Enquiry Automation</h2>
+          <p class="lede">Rikkon Group is a Chennai-based manufacturer of lubrication systems, engine valves and wire harnesses. Customer enquiries for all its divisions arrived in a single shared inbox and were sorted manually.</p>
+          <p class="lede">I designed and built an automated pre-sales workflow in Make.com. A GPT-4o classifier reads each incoming email, routes it to the appropriate team, matches it to one of nine equipment enquiry forms and issues a branded acknowledgement with a unique enquiry ID. I documented the end-to-end process as a set of engineering-style drawings for review by senior management.</p>
+        </div>
+        <dl class="spec">
+          <div><dt>Year</dt><dd>2026</dd></div>
+          <div><dt>Scope</dt><dd>Working automation, Excel tracking workbook, 3 swim-lane process drawings, management briefing deck</dd></div>
+          <div><dt>Stack</dt><dd>Make.com · OpenAI GPT-4o · Outlook · Excel Online</dd></div>
+          <div><dt>Drawing style</dt><dd>Title block, numbered steps and colour-coded arrows by direction</dd></div>
+        </dl>
+      </div>
+
+      <div class="stats">
+        <div class="stat"><b>130</b><span>emails audited to tune the classifier</span></div>
+        <div class="stat"><b>4</b><span>routing categories: Parts, Lubrication, Services, Other</span></div>
+        <div class="stat"><b>9</b><span>equipment-type forms matched automatically</span></div>
+        <div class="stat"><b>11</b><span>steps drawn from enquiry to payment</span></div>
+      </div>
+
+      <div class="row r1">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: End-to-end flow"><img src="img/rikkon-flow-main.jpg" width="2000" height="895" alt="Drawing 001: End-to-end pre-sales automation flow in four swim lanes (Customer, PSA System, Sales Team, Accounts), 11 steps from enquiry received to payment confirmed." loading="lazy"></button>
+          <figcaption><strong>Drawing 001 · End-to-end pre-sales flow</strong><span>4 swim lanes · 11 steps · sheet 1 of 3</span></figcaption>
+        </figure>
+      </div>
+      <div class="row r2">
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Procurement flow"><img src="img/rikkon-flow-procurement.jpg" width="1600" height="782" alt="Drawing 002: Internal procurement flow between Sales Team, Engineering and Supplier." loading="lazy"></button>
+          <figcaption><strong>Drawing 002 · Internal procurement</strong><span>Sales → Engineering → Supplier</span></figcaption>
+        </figure>
+        <figure>
+          <button class="shot" type="button" aria-label="Enlarge: Shipment flow"><img src="img/rikkon-flow-shipment.jpg" width="1600" height="782" alt="Drawing 003: Shipment and delivery confirmation flow between PSA System, Logistics and Customer." loading="lazy"></button>
+          <figcaption><strong>Drawing 003 · Shipment &amp; delivery</strong><span>PSA System → Logistics → Customer</span></figcaption>
+        </figure>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= CONTACT ================= -->
+  <section class="contact" id="contact" aria-labelledby="h-contact">
+    <div class="wrap">
+      <div class="sheet">
+        <span class="cm-b" aria-hidden="true"></span>
+        <h2 id="h-contact">Get in touch</h2>
+        <p>I am available for design and automation engagements, on a full-time or freelance basis. I am based in Chennai and work in English, Tamil, Hindi and Japanese.</p>
+        <div class="lines">
+          <div class="line">
+            <span class="label">Email</span>
+            <span class="v" id="v-email">adityakasthuri55@gmail.com</span>
+            <button class="copy" type="button" data-copy="v-email" id="copy-email">Copy</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  <div class="wrap">
+    <span class="label">© 2026 Aditya Kasthuri</span>
+    <span class="label">Images shown at reduced resolution · full-resolution files available on request</span>
+  </div>
+</footer>
+
+<div class="lb" id="lb" hidden role="dialog" aria-modal="true" aria-label="Image viewer">
+  <div class="lb-bar">
+    <span class="lb-count" id="lb-count"></span>
+    <div class="lb-btns">
+      <button type="button" id="lb-prev" aria-label="Previous image">Prev</button>
+      <button type="button" id="lb-next" aria-label="Next image">Next</button>
+      <button type="button" id="lb-close" aria-label="Close viewer">Close</button>
+    </div>
+  </div>
+  <div class="lb-stage"><img id="lb-img" alt=""></div>
+  <div class="lb-cap"><strong id="lb-title"></strong><span id="lb-meta"></span></div>
+</div>
+
+<script>
+(function () {
+  var shots = Array.prototype.slice.call(document.querySelectorAll('.shot'));
+  var lb = document.getElementById('lb');
+  var img = document.getElementById('lb-img');
+  var title = document.getElementById('lb-title');
+  var meta = document.getElementById('lb-meta');
+  var count = document.getElementById('lb-count');
+  var current = 0, lastFocus = null;
+
+  function show(i) {
+    current = (i + shots.length) % shots.length;
+    var s = shots[current];
+    var thumb = s.querySelector('img');
+    var cap = s.parentNode.querySelector('figcaption');
+    img.src = thumb.getAttribute('src');
+    img.alt = thumb.alt;
+    title.textContent = cap ? cap.querySelector('strong').textContent : '';
+    meta.textContent = cap ? cap.querySelector('span').textContent : '';
+    count.textContent = (current + 1) + ' / ' + shots.length;
+  }
+  function open(i) {
+    lastFocus = document.activeElement;
+    show(i);
+    lb.hidden = false;
+    document.body.style.overflow = 'hidden';
+    document.getElementById('lb-close').focus();
+  }
+  function close() {
+    lb.hidden = true;
+    document.body.style.overflow = '';
+    if (lastFocus) lastFocus.focus();
+  }
+  shots.forEach(function (s, i) { s.addEventListener('click', function () { open(i); }); });
+  document.getElementById('lb-close').addEventListener('click', close);
+  document.getElementById('lb-prev').addEventListener('click', function () { show(current - 1); });
+  document.getElementById('lb-next').addEventListener('click', function () { show(current + 1); });
+  lb.addEventListener('click', function (e) { if (e.target === lb || e.target.classList.contains('lb-stage')) close(); });
+  document.addEventListener('keydown', function (e) {
+    if (lb.hidden) return;
+    if (e.key === 'Escape') close();
+    else if (e.key === 'ArrowRight') show(current + 1);
+    else if (e.key === 'ArrowLeft') show(current - 1);
+  });
+
+  Array.prototype.forEach.call(document.querySelectorAll('.copy'), function (btn) {
+    btn.addEventListener('click', function () {
+      var el = document.getElementById(btn.getAttribute('data-copy'));
+      var text = el.textContent.trim();
+      function done(ok) {
+        btn.textContent = ok ? 'Copied' : 'Select';
+        btn.classList.toggle('done', ok);
+        setTimeout(function () { btn.textContent = 'Copy'; btn.classList.remove('done'); }, 1800);
+      }
+      function selectText() {
+        var r = document.createRange(); r.selectNodeContents(el);
+        var sel = window.getSelection(); sel.removeAllRanges(); sel.addRange(r);
+        done(false);
+      }
+      try {
+        if (navigator.clipboard && navigator.clipboard.writeText) {
+          navigator.clipboard.writeText(text).then(function () { done(true); }, selectText);
+        } else { selectText(); }
+      } catch (err) { selectText(); }
+    });
+  });
+})();
+</script>
+</body>
+</html>
